@@ -1,5 +1,5 @@
 LOCAL_VOLUME="${HOME}/devel/salt/"
-BARNACLE_DIR="${HOME}/devel/barnacle"
+BARNACLE_DIR="${HOME}/Projects/barnacle"
 LOCAL_FILEROOTS="/srv/salt"
 
 if [[ -e /usr/bin/sw_vers && `/usr/bin/sw_vers -productName` == "Mac OS X" ]]; then
@@ -13,7 +13,7 @@ fi
 csalt_func() {
     image=$1
     shift
-    $SUDO $DOCKER run --name salt-$image --rm -itv ${LOCAL_VOLUME}:/testing salt-$image ${@:-/bin/bash}
+    $SUDO $DOCKER run --rm -itv ${LOCAL_VOLUME}:/testing salt-$image ${@:-/bin/bash}
 }
 
 cexec_func() {
